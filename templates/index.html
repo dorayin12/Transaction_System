@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Research Analytics Software Sale Information Input System</title>
+    <link rel="stylesheet" type="text/css" href="/static/ra-sales.css">
+
+</head>
+
+<body>
+<h2>
+<!--Head Start: the place to put banner and logo of IU-->
+           <div id="branding-bar-v1" itemscope="itemscope" itemtype="http://schema.org/CollegeOrUniversity">
+	<div class="bar">
+		<div class="wrapper">
+			<p class="campus">
+				<img src="//assets.iu.edu/brand/legacy/trident-large.png" height="73" width="64" alt=" " />
+				<a href="http://www.iu.edu"> Indiana University</a>
+		</div>
+	</div>
+ </div>
+</h2>
+<h3>
+				<a class="linkbutton" href="/index">Index</a>
+				<a class="linkbutton" href="/search">Search</a>
+				<a class="linkbutton" href="/validate">Account Validation</a>
+</h3>
+				
+			</p>
+
+
+<div align="center">
+    <h1>Research Analytics Software Sale Information Input System</h1>
+  <p>
+<form action="add-sale" method="post" id="add-sale">
+  </p>
+</div>
+<div align="center">
+<b>User Informtion: <br><br></b>
+</div>
+<div align="left">
+<!--Sale date section-->
+  Sold on (yyyy-mm-dd):&nbsp;&nbsp; 
+  <input type="text" name="soldondate" value="2016-00-00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!--Personal information-->
+  Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" name="username">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  E-mail:&nbsp;&nbsp;
+    <input type="text" name="email" value="@indiana.edu"><br><br>
+  Departmental Account:&nbsp;&nbsp;
+    <input type="text" name="departmentaccount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Sub-account:&nbsp;&nbsp;
+    <input type="text" name="subaccount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
+</div>
+<div align="center">
+<b>Software Informtion: <br><br></b>
+</div>
+<div align="left">
+<!--Item information-->
+<!--The software list is in the script-->
+  Software:&nbsp;&nbsp; 
+   <select id='softwareList' name="softwareList"> 
+   </select><br><br>
+
+<!--Item type-->
+   Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="title" name="title"><br><br>
+  <label>Item Type:</label>
+    <input type="radio" name="itemtypes" id="standalone" value="STANDALONE" checked /> Standalone
+    <input type="radio" name="itemtypes" id="net" value="NET" /> NET <br><br>
+  Object Code:
+    <input type="text" name="objectcode" value="4616"> 
+  Sub-object Code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="subobjcode" name="subobjcode"><br><br>
+  Price per Copy ($):&nbsp;&nbsp;
+    <input id="unit_price" class="numbersOnly" name="unit_price">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Quantity:&nbsp;&nbsp;
+    <input id="amount" class="numbersOnly" name="amount"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Total Cost ($):&nbsp;&nbsp;
+    <input id="total_price" value="0" name="total_price"><br><br>
+</div>
+  <div align="center">
+<!--Submit button-->
+  <button type="submit" form="add-sale" value="Submit">Submit</button>
+</p>
+</form>
+</div>
+</body>
+
+</script>
+<!--Javascript for calculating total amount-->
+<!--The "data" refers to the script of software list-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!--Selection box-->
+<script type="text/javascript">
+	var ratio = 1;
+   $(document).ready(function(e) {
+		$.each(data, function(k, v) {
+		generateSoftwareList(k, v.name);
+		updatePrice();
+		 $('#amount, #softwareList').change(function(){
+			updatePrice();
+         });
+		});
+		
+	
+	$("input[name=itemtypes]:radio").change(function () {
+		if(this.value === 'STANDALONE') {
+			ratio = 1;
+		} else if (this.value === 'NET' ) {
+			ratio = 1.5;
+		} else {
+			console.log(this.value);
+		}
+		updatePrice();
+	});
+	
+		
+   });
+
+
+function generateSoftwareList(id, name) {
+	$('#softwareList').append('<option value="'+id+'">'+name+'</option>');
+}
+
+function updatePrice() {
+	var id = $( "#softwareList option:selected" ).val();
+	if(typeof id === 'undefined') {
+		id = $('#softwareList option:first').val();
+	}
+
+	var title = data[id].title;
+	var subobjcode = data[id].subobjcode;
+	var price = data[id].price * ratio;
+	var amount = $('#amount').val();
+	var total = price * amount;
+	$('#subobjcode').val(subobjcode);
+	$('#title').val(title);
+	$('#unit_price').val(price);
+	$('#total_price').val(total);
+
+}
+$('.numbersOnly').keyup(function () {
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+});
+
+<!--Javascript for changing price-->
+$("select[name=itemtypes]").change(function () {
+    $('input[name=unit_price]').val((this.value == 'standalone') ? "price*1" : "price*1.5")
+});
+<!--The selection of item title-->
+var data = {
+
+       1: {name:"Amos", price:110, subobjcode:"002", title:"Amos" },
+
+       2: {name:"Arc GIS Desktop", price:300, subobjcode:"007", title:"Arc GIS Desktop" },
+
+       3: {name:"HLM", price:125, subobjcode:"013", title:"HLM" },
+
+       4: {name:"JMP", price:50, subobjcode:"004", title:"JMP" },
+	   
+	   5: {name:"KSOB", price:0, subobjcode:"020", title:"KSOB" },
+
+       6: {name:"LISREL", price:100, subobjcode:"014", title:"LISREL" },
+
+       7: {name:"Maple", price:125, subobjcode:"010", title:"Maple" },
+
+       8: {name:"Maple for Students", price:50, subobjcode:"010", title:"Maple for Students" },
+
+       9: {name:"Mathematica", price:175, subobjcode:"011", title:"Mathematica" },
+
+       10: {name:"Mathematica for Students", price:50, subobjcode:"011", title:"Mathematica for Students" },
+
+       11: {name:"Minitab", price:50, subobjcode:"016", title:"Minitab" },
+
+       12: {name:"NVivo", price:150, subobjcode:"012", title:"NVivo" },
+
+       13: {name:"SAS", price:125, subobjcode:"003", title:"SAS" },
+
+       14: {name:"SigmaPlot for Windows", price:120, subobjcode:"015", title:"SigmaPlot for Windows" },
+
+       15: {name:"SPSS", price:100, subobjcode:"001", title:"SPSS" },
+	   
+	   16: {name:"STC", price:0, subobjcode:"000", title:"STC" },
+
+
+}
+</script>

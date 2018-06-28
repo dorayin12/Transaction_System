@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Import data</title>
+    <link rel="stylesheet" type="text/css" href="/static/ra-sales.css">
+
+</head>
+
+<body>
+<h2>
+<!--Head Start: the place to put banner and logo of IU-->
+           <div id="branding-bar-v1" itemscope="itemscope" itemtype="http://schema.org/CollegeOrUniversity">
+	<div class="bar">
+		<div class="wrapper">
+			<p class="campus">
+				<img src="//assets.iu.edu/brand/legacy/trident-large.png" height="73" width="64" alt=" " />
+				<a href="http://www.iu.edu"> Indiana University</a>
+		</div>
+	</div>
+ </div>
+</h2>
+<h3>
+				<a class="linkbutton" href="/index">Index</a>
+				<a class="linkbutton" href="/search">Search</a>
+				<a class="linkbutton" href="/import">Import</a>
+				<a class="linkbutton" href="/export">Export</a>
+</h3>
+				
+			</p>
+
+
+<div align="center">
+    <h1>Research Analytics Software Sale Information Input System</h1>
+  <p>
+<form action="upload" method="post" id="upload">
+  </p>
+</div>
+<b>Please upload a *.csv file <br>
+Please make sure the first row shows column names in this order: username, email, <br><br></b>
+<form action="demo_form.asp">
+  <input type="file" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+  <input type="submit">
+</form>
+</body>
+</html>

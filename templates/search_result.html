@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/ra-sales.css">
+
+</head>
+
+<body>
+<h2>
+<!--Head Start: the place to put banner and logo of IU-->
+           <div id="branding-bar-v1" itemscope="itemscope" itemtype="http://schema.org/CollegeOrUniversity">
+	<div class="bar">
+		<div class="wrapper">
+			<p class="campus">
+				<img src="//assets.iu.edu/brand/legacy/trident-large.png" height="73" width="64" alt=" " />
+				<a href="http://www.iu.edu"> Indiana University</a>
+		</div>
+	</div>
+ </div>
+</h2>
+<h3>
+				<a class="linkbutton" href="/index">Index</a>
+				<a class="linkbutton" href="/search">Search</a>
+			    <a class="linkbutton" href="/validate">Account Validation</a>
+</h3>
+				
+			</p>
+
+
+<div align="center">
+    <h1>Research Analytics Software Sale Information Input System</h1>
+  <p>
+<form action="input-keyword" method="get" id="input-keyword">
+  </p>
+</div>
+<div align="center">
+    <title>Search results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ra-sales.css') }}">
+</head>
+<body>
+    <h1>User</h1>
+    <table>
+    <thead>
+       <tr>
+       <th>ID_User</th>
+       <th>ID_Account</th>
+       <th>ID_Order</th>
+       <th>User Name</th>
+       <th>Email</th>
+       <th>Account Number</th>
+       <th>Subaccount</th>
+       <th>Date_Soldon</th>
+       <th>Date_Entered</th>
+       <th>Object Code</th>
+       <th>SubObject Code</th>
+       <th>Item</th>
+       <th>Item_Type</th>
+       <th>Quantity</th>
+       <th>Price</th>
+       <th>Total Cost</th>
+
+       </tr>
+    </thead>
+   {%  for u in users %}
+        <tr>
+           <td><input type="text" name="iduser" size="2" value="{{ u[0] }}"></td> <!-- iduser  -->
+           <td><input type="text" name="iduser" size="2" value="{{ u[7] }}"></td> <!-- idaccount  -->
+           <td><input type="text" name="iduser" size="2" value="{{ u[9] }}"></td> <!-- idorder  -->
+           <td>{{ u[1] }}</td> <!--  username -->
+           <td>{{ u[2] }}</td> <!--  email -->
+           <td>{{ u[5] }}</td> <!--  account number -->
+           <td>{{ u[6] }}</td> <!--  sub account --> 
+           <td>{{ u[10] }}</td> <!-- date soldon  -->
+           <td>{{ u[11] }}</td> <!-- date entered  -->
+           <td>{{ u[12] }}</td> <!-- obj code  -->
+           <td>{{ u[13] }}</td> <!-- sub obj  -->
+           <td>{{ u[14] }}</td> <!-- title  -->
+           <td>{{ u[15] }}</td> <!-- type  -->
+           <td>{{ u[16] }}</td> <!-- quantity  -->
+           <td>{{ u[17] }}</td> <!-- price  -->
+           <td>{{ u[18] }}</td> <!-- cost  -->		   
+        </tr>
+   {%  endfor %}
+    </table>
+</div>
+<!-- <div align="left">
+<input type="submit" value="Delete User">
+<input type="submit" value="Delete Account">
+<input type="submit" value="Delete Order"> -->
+</div>
+</body>
+</html>

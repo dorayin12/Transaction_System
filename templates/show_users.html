@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ra-sales.css') }}">
+</head>
+<body>
+    <h1>Users</h1>
+    <table>
+    <thead>
+       <tr>
+       <th>User Name</th>
+       <th>Account Number</th>
+       <th>Subaccount</th>
+       </tr>
+    </thead>
+   {%  for u in users %}
+        <tr>
+           <td>{{ u[0] }}</td>
+           <td>{{ u[1] }}</td>
+           <td>{{ u[2] }}</td>
+        </tr>
+   {%  endfor %}
+    </table>
+</body>
+</html>

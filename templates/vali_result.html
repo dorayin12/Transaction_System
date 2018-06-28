@@ -1,0 +1,76 @@
+<head>
+<meta charset="UTF-8">
+<title>Export</title>
+    <link rel="stylesheet" type="text/css" href="/static/ra-sales.css">
+
+</head>
+
+<body>
+<h2>
+<!--Head Start: the place to put banner and logo of IU-->
+           <div id="branding-bar-v1" itemscope="itemscope" itemtype="http://schema.org/CollegeOrUniversity">
+	<div class="bar">
+		<div class="wrapper">
+			<p class="campus">
+				<img src="//assets.iu.edu/brand/legacy/trident-large.png" height="73" width="64" alt=" " />
+				<a href="http://www.iu.edu"> Indiana University</a>
+		</div>
+	</div>
+ </div>
+</h2>
+<h3>
+				<a class="linkbutton" href="/index">Index</a>
+				<a class="linkbutton" href="/search">Search</a>
+				<a class="linkbutton" href="/validate">Account Validation</a>
+</h3>
+				
+			</p>
+
+
+<div align="center">
+    <h1>Research Analytics Software Sale Information Input System</h1>
+</div>
+<div align="center">
+<textarea name="Text1" cols="10" rows="50"></textarea>
+<p>
+<form action="input-keyword" method="get" id="input-keyword">
+  </p>
+</div>
+<div align="center">
+    <title>Search results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ra-sales.css') }}">
+</head>
+<body>
+    <h1>User</h1>
+    <table>
+    <thead>
+       <tr>
+       <th>User Name</th>
+       <th>Account Number</th>
+       <th>Subaccount</th>
+       <th>Status</th>
+
+       </tr>
+    </thead>
+   {%  for u in users %}
+        <tr>
+           <td><input type="text" name="iduser" size="2" value="{{ u[0] }}"></td>
+           <td><input type="text" name="iduser" size="2" value="{{ u[4] }}"></td>
+           <td><input type="text" name="iduser" size="2" value="{{ u[8] }}"></td>
+           <td>{{ u[1] }}</td>
+           <td>{{ u[2] }}</td>
+           <td>{{ u[5] }}</td>
+           <td>{{ u[6] }}</td>
+           <td>{{ u[9] }}</td>
+           <td>{{ u[10] }}</td>
+           <td>{{ u[11] }}</td>
+           <td>{{ u[12] }}</td>
+           <td>{{ u[13] }}</td>
+           <td>{{ u[14] }}</td>
+           <td>{{ u[15] }}</td>
+           <td>{{ u[16] }}</td>
+           <td>{{ u[17] }}</td>
+        </tr>
+   {%  endfor %}
+    </table>
+</div>
