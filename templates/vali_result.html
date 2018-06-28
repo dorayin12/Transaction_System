@@ -1,6 +1,6 @@
 <head>
 <meta charset="UTF-8">
-<title>Export</title>
+<title>Results of Account Validation</title>
     <link rel="stylesheet" type="text/css" href="/static/ra-sales.css">
 
 </head>
@@ -21,6 +21,7 @@
 <h3>
 				<a class="linkbutton" href="/index">Index</a>
 				<a class="linkbutton" href="/search">Search</a>
+                                <a class="linkbutton" href="/export">Export</a>
 				<a class="linkbutton" href="/validate">Account Validation</a>
 </h3>
 				
@@ -31,46 +32,31 @@
     <h1>Research Analytics Software Sale Information Input System</h1>
 </div>
 <div align="center">
-<textarea name="Text1" cols="10" rows="50"></textarea>
-<p>
-<form action="input-keyword" method="get" id="input-keyword">
-  </p>
-</div>
-<div align="center">
-    <title>Search results</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ra-sales.css') }}">
+
 </head>
 <body>
-    <h1>User</h1>
+    <h1>Results of Account Validation</h1>
     <table>
     <thead>
        <tr>
-       <th>User Name</th>
        <th>Account Number</th>
        <th>Subaccount</th>
+       <th>Subaccount description</th>
        <th>Status</th>
 
        </tr>
     </thead>
-   {%  for u in users %}
+   {%  for a in accounts %}
         <tr>
-           <td><input type="text" name="iduser" size="2" value="{{ u[0] }}"></td>
-           <td><input type="text" name="iduser" size="2" value="{{ u[4] }}"></td>
-           <td><input type="text" name="iduser" size="2" value="{{ u[8] }}"></td>
-           <td>{{ u[1] }}</td>
-           <td>{{ u[2] }}</td>
-           <td>{{ u[5] }}</td>
-           <td>{{ u[6] }}</td>
-           <td>{{ u[9] }}</td>
-           <td>{{ u[10] }}</td>
-           <td>{{ u[11] }}</td>
-           <td>{{ u[12] }}</td>
-           <td>{{ u[13] }}</td>
-           <td>{{ u[14] }}</td>
-           <td>{{ u[15] }}</td>
-           <td>{{ u[16] }}</td>
-           <td>{{ u[17] }}</td>
+           <td>{{ a[1] }}</td> <!--account number-->
+           <td>{{ a[2] }}</td> <!--sub_account-->
+           <td>{{ a[3] }}</td> <!--description-->
+           <td>{{ a[4] }}</td> <!--status-->
+
         </tr>
-   {%  endfor %}
-    </table>
+   {%  endfor %}    
+
+
+
+</table>
 </div>

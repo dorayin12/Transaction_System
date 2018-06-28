@@ -21,10 +21,10 @@
  </div>
 </h2>
 <h3>
-				<a class="linkbutton" href="/templates/Index.html">Index</a>
-				<a class="linkbutton" href="/templates/search.html">Search</a>
-				<a class="linkbutton" href="/templates/import.html">Import</a>
-				<a class="linkbutton" href="/templates/export.html">Export</a>
+				<a class="linkbutton" href="/index">Index</a>
+				<a class="linkbutton" href="/search">Search</a>
+				<a class="linkbutton" href="/export">Export</a>
+				<a class="linkbutton" href="/validate">Account Validation</a>
 </h3>
 				
 			</p>
@@ -34,5 +34,29 @@
     <h1>Research Analytics Software Sale Information Input System</h1>
 </div>
 <div align="center">
-<h3>Export Data from Databse<br><br></h3>
+<h3>Export Data from Database<br><br></h3>
+Username: 
+<form name="username" method="post" action="export">
+    <input name="username" type="text" size="40">
+<br><br>
+</p>
 <p>
+Software: 
+<br><br>
+<form name="software" method="post" action="export">
+    <input name="software" type="text" size="40">
+<br><br>
+</p>
+<p>
+Date Range (yyyy-mm-dd):
+<br>
+</p>
+<p>
+<form name="timerange" method="post" action="export">
+    Start Date:
+    <input name="date1" type="text" size="20", placeholder="start date">
+	<br><br>
+	End Date:
+	<input name="date2" type="text" size="20", placeholder="end date">
+	<br><br>
+    <input type="submit" name="submit" value="export" />

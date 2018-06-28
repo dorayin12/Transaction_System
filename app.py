@@ -14,4 +14,3 @@ def index(chartID = 'chart_ID', chart_type = 'bar', chart_height = 350):
 
 if __name__ == "__main__":
 	app.run(debug = True, host='0.0.0.0', port=8080, passthrough_errors=True)
-Raw

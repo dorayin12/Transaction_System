@@ -11,7 +11,7 @@ database = MySQLdb.connect (user="root", host="localhost", db="oldsales")
 cursor = database.cursor()
 
 #Read all values in column 4
-c      = sheet.col(4) 
+#c      = sheet.col(4) 
 
 #Change date into MySQL format
 ##for c in range(1, sheet.nrows):
@@ -33,8 +33,8 @@ def cellval(cell, datemode):
 for r in range(1, sheet.nrows): #1 stands for the 2nd row
          username            = sheet.cell(r,0).value
          email               = sheet.cell(r,1).value
-         departmentaccount   = sheet.cell(r,2).value
-         subaccount          = sheet.cell(r,3).value
+#         departmentaccount   = sheet.cell(r,2).value
+#         subaccount          = sheet.cell(r,3).value
          objcode             = sheet.cell(r,5).value
          subobjcode          = sheet.cell(r,6).value
          software            = sheet.cell(r,7).value
@@ -49,17 +49,17 @@ for r in range(1, sheet.nrows): #1 stands for the 2nd row
          date_soldon         = cellval(c, 0)
 
 
+
 #Assign values from each row (it should be in the loop)
-         cursor.execute('INSERT IGNORE INTO users (user_name, email) VALUES (%s, %s)', (username, email) )
-         cursor.execute('select distinct id_user from users where email = %s', (email))
-         userid = cursor.fetchall()
+         cursor.execute('INSERT IGNORE INTO users (user_name, email) VALUES (%s, %s)', (username, email))
+         cursor.execute('select distinct id_user from users where email = %s', [email])
+         userid = cursor.fetchone()
 #         cursor.execute('INSERT INTO accounts (id_user, account_number, sub_account) VALUES (%s, %s, %s)',
 #                        (userid, departmentaccount, subaccount))
-         cursor.execute('INSERT INTO orders (date_soldon, item_title, obj_code, sub_objcode, item_type, quantity, price_per_copy,\
-                        total_cost, product, product_family, item_number, id_user) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',\
-                        (date_soldon, software, objcode, subobjcode, itemtype, quantity, price, total, product, productfamily, item_profam, userid))
-      
-
+         cursor.execute('INSERT INTO orders (id_user, date_soldon, item_title, obj_code, sub_objcode, item_type, quantity, price_per_copy, total_cost, product, product_family, item_number) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
+                         (userid, date_soldon, software, objcode, subobjcode, itemtype, quantity, price, total, product, productfamily, item_profam))
+         
+        
 cursor.close()
 database.commit()
 database.close()

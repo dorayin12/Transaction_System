@@ -1,0 +1,16 @@
+1	Amos	150	002
+2	Arc GIS Desktop	300	007
+3	HLM	125	013
+4	JMP	50	004
+5	LISREL	100	014
+6	Maple	125	010
+7	Maple for Students	50	010
+8 	Matlab	0	005
+9	Matlab Toolboxes	30	006
+10	Mathematica	175	011
+11	Mathematica for Students	50	011
+12	Minitab	50	016
+13	NVivo	150	012
+14	SAS	125	003
+15	SigmaPlot for Windows	120	015
+16	SPSS	100	001

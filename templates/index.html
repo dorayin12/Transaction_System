@@ -21,8 +21,9 @@
  </div>
 </h2>
 <h3>
-				<a class="linkbutton" href="/index">Index</a>
+				<a class="linkbutton" href="/index">index</a>
 				<a class="linkbutton" href="/search">Search</a>
+                                <a class="linkbutton" href="/export">Export</a>
 				<a class="linkbutton" href="/validate">Account Validation</a>
 </h3>
 				
@@ -41,16 +42,28 @@
 <div align="left">
 <!--Sale date section-->
   Sold on (yyyy-mm-dd):&nbsp;&nbsp; 
-  <input type="text" name="soldondate" value="2016-00-00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="text" name="soldondate" id="soldondate" type="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!--Personal information-->
   Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" name="username">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  E-mail:&nbsp;&nbsp;
-    <input type="text" name="email" value="@indiana.edu"><br><br>
+  <input type="text" name="username">&nbsp;&nbsp;
+  @
+  <select name="emailList" id="emailList">
+  <option value="iu.edu">iu.edu</option>
+  <option value="indiana.edu">indiana.edu</option>
+  <option value="iupui.edu">iupui.edu</option>
+  <option value="iue.edu">iue.edu</option>
+  <option value="iuk.edu">iuk.edu</option>
+  <option value="iun.edu">iun.edu</option>
+  <option value="iusb.edu">iusb.edu</option>
+  <option value="ius.edu">ius.edu</option>
+  <option value="ipfw.edu">ipfw.edu</option>
+  <option value="imail.iu.edu">imail.iu.edu</option>  
+  </select>
+  <br><br>	
   Departmental Account:&nbsp;&nbsp;
     <input type="text" name="departmentaccount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   Sub-account:&nbsp;&nbsp;
-    <input type="text" name="subaccount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
+    <input type="text" name="subaccount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br>
 </div>
 <div align="center">
 <b>Software Informtion: <br><br></b>
@@ -63,15 +76,17 @@
    </select><br><br>
 
 <!--Item type-->
-   Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input id="title" name="title"><br><br>
   <label>Item Type:</label>
     <input type="radio" name="itemtypes" id="standalone" value="STANDALONE" checked /> Standalone
     <input type="radio" name="itemtypes" id="net" value="NET" /> NET <br><br>
-  Object Code:
+  Object Code:&nbsp;&nbsp;&nbsp;
     <input type="text" name="objectcode" value="4616"> 
   Sub-object Code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="subobjcode" name="subobjcode"><br><br>
+    <input id="subobjcode" name="subobjcode">
+  Form Number:&nbsp;&nbsp;
+    <input type="text" name="formnumber">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
   Price per Copy ($):&nbsp;&nbsp;
     <input id="unit_price" class="numbersOnly" name="unit_price">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   Quantity:&nbsp;&nbsp;
@@ -149,10 +164,18 @@ $('.numbersOnly').keyup(function () {
 $("select[name=itemtypes]").change(function () {
     $('input[name=unit_price]').val((this.value == 'standalone') ? "price*1" : "price*1.5")
 });
+<!--Pre-populate today's date-->
+(function () {
+    var soldondate = new Date().toISOString().substring(0, 10),
+        field = document.querySelector('#soldondate');
+    field.value = soldondate;
+    console.log(field.value);
+
+})()
 <!--The selection of item title-->
 var data = {
 
-       1: {name:"Amos", price:110, subobjcode:"002", title:"Amos" },
+       1: {name:"Amos", price:150, subobjcode:"002", title:"Amos" },
 
        2: {name:"Arc GIS Desktop", price:300, subobjcode:"007", title:"Arc GIS Desktop" },
 
@@ -160,7 +183,7 @@ var data = {
 
        4: {name:"JMP", price:50, subobjcode:"004", title:"JMP" },
 	   
-	   5: {name:"KSOB", price:0, subobjcode:"020", title:"KSOB" },
+       5: {name:"KSOB", price:0, subobjcode:"000", title:"KSOB" },
 
        6: {name:"LISREL", price:100, subobjcode:"014", title:"LISREL" },
 
@@ -177,12 +200,18 @@ var data = {
        12: {name:"NVivo", price:150, subobjcode:"012", title:"NVivo" },
 
        13: {name:"SAS", price:125, subobjcode:"003", title:"SAS" },
-
-       14: {name:"SigmaPlot for Windows", price:120, subobjcode:"015", title:"SigmaPlot for Windows" },
-
-       15: {name:"SPSS", price:100, subobjcode:"001", title:"SPSS" },
 	   
-	   16: {name:"STC", price:0, subobjcode:"000", title:"STC" },
+       14: {name:"SAS ENT Miner", price:250, subobjcode:"003", title:"SAS ENT Miner" },
+
+       15: {name:"SigmaPlot for Windows", price:120, subobjcode:"015", title:"SigmaPlot for Windows" },
+
+       16: {name:"SPSS", price:100, subobjcode:"001", title:"SPSS" },
+	   
+       17: {name:"SPSS Custom Tables", price:75, subobjcode:"001", title:"SPSS Custom Tables" },
+	   
+       18: {name:"STC", price:0, subobjcode:"000", title:"STC" },
+	   
+       19: {name:"Other", price:0, subobjcode:"000", title:" " },
 
 
 }
