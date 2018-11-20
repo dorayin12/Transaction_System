@@ -1,5 +1,6 @@
 # Transaction_System
 Python and HTML scripts to build a software transaction system
+Functions include insert, store, search, import, export, and automatic weekly email reporting
 # Templates
 HTML scripts to create web pages
 # Static
