@@ -5,6 +5,6 @@ HTML scripts to create web pages
 # Static
 CSS scripts
 # Backup
-MySQL database
+Using MySQL function to backup the database. No code needed.
 # Charges
 Weekly sales report (private data has been removed)
