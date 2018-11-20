@@ -7,7 +7,7 @@ import base64
 app = Flask(__name__)
 
 
-#Index
+#Index 
 @app.route('/')
 @app.route('/index')
 def index():
