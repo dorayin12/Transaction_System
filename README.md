@@ -1,5 +1,5 @@
 # Transaction_System
-Python and HTML scripts to build a software transaction system
+Python, SQL and HTML scripts to build a software transaction system
 Functions include insert, store, search, import, export, and automatic weekly email reporting
 The file index.py includes all codes for running the system.
 # Templates
